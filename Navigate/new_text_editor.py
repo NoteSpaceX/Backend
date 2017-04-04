@@ -1,12 +1,8 @@
 from tkinter import *
 from tkinter import filedialog
 from tkinter import messagebox
-#
-# import syntax
-import synonyms
 
-
-
+import concept_search
 
 # set up the frame
 master = Tk()
@@ -20,14 +16,11 @@ text = Text(master, width=400, height=380, font=("Andale Mono", 12), highlightth
 text.pack()
 
 # Methods
-
-
 def new():
     ans = messagebox.askquestion(title="Save File", message="Would you like to save this file?")
     if ans is True:
         save()
     delete_all()
-
 
 def open_file():
     new()
@@ -75,19 +68,19 @@ def delete_all():
 
 
 def search_synonyms():
-    # get the dictionary of all words and their synonyms
-    path = filedialog.asksaveasfilename()
-    # write = open(path, mode='w')
-    result_dict = synonyms.word_to_concepts(path)
-    word = []
-    for key, value in result_dict.items():
-        word = [x[0] for x in value]
+    the_text = text.get("1.0", END)
+    result_dict = concept_search.word_to_concepts(the_text)
+    print(result_dict)
+    
+    search_word = "but"
+    word_syns = result_dict[search_word]
+    
+    
+    for item in word_syns:
+        print(item[0])
+        text.tag_add("tag", str(item[1]) + "." + str(item[2]), str(item[1]) + "." + str(len(item[0]) + item[2]))
+        text.tag_config("tag", background="yellow", foreground="black")
 
-    for item in word:
-        text.tag_config(background="yellow")
-        text.replace(item, '\033[44;33m{}\033[m'.format(item))
-
-    text2 = Text(master,width=400, height=380, font=("Andale Mono", 12), highlightthickness=0, bd=2 )
 
 # File Menu
 menu = Menu(master)
