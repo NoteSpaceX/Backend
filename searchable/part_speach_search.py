@@ -11,7 +11,7 @@ class Categorize:
         # sentences = nltk.sent_tokenize(self)
         tokens = nltk.word_tokenize(self)
         tagged = nltk.pos_tag(tokens)
-
+        
         for item in tagged:
             key = item[1]
             if key not in dict:
@@ -19,7 +19,7 @@ class Categorize:
             elif item[0] not in dict[key]:
                 dict[key].append(item[0])
         return dict
-
+    
     def list_to_string(self):
         result = ""
         for item in self:
@@ -27,49 +27,49 @@ class Categorize:
         return result
 
 
-def make_dict(word, text):
+def make_dict(word, body, text):
     # take the categorize dictionary
     categorize_dict = Categorize.text_dictionary(text)
-
+    
     # make the new dictionary that we will return
     new_dict = {}
-
+    
     # iterate through the current dictionary
     for key, value in categorize_dict.items():
-
-
+        
+        
         # iterate through the values because the dictionary contains a list of values as value
         for item in value:
             sublist = []
-
+            
             sublist.append(item)
-            sublist.append(Navigate.Navigate.get_line(item, "sample.txt"))
-            sublist.append(Navigate.Navigate.get_specific_column_number(item, "sample.txt"))
-
+            sublist.append(Navigate.Navigate.get_line(item, text))
+            sublist.append(Navigate.Navigate.get_specific_column_number(item, text))
+            
             item_tuple = tuple(sublist)
-
-            if key not in new_dict and item_tuple[0] in text:
+            
+            if key not in new_dict and item_tuple[0] in body:
                 new_dict[key] = [item_tuple]
             elif key in new_dict and item_tuple not in new_dict[key]:
                 new_dict[key].append(item_tuple)
 
-    return new_dict
+return new_dict
 
 
-def main():
-    # print("Enter a file name: ")
-    # file_name = raw_input()
-    text_file = open("sample.txt", 'r')
-    text = text_file.read()
-
-    dict = Categorize.text_dictionary(text)
-    print(dict)
-
-    new_dict = make_dict("", text)
-    print(new_dict)
-
-
-if __name__ == "__main__":
-    main()
-
+# def main():
+#     # print("Enter a file name: ")
+#     # file_name = raw_input()
+#     text_file = open("sample.txt", 'r')
+#     text = text_file.read()
+#
+#     dict = Categorize.text_dictionary(text)
+#     print(dict)
+#
+#     new_dict = make_dict("", text)
+#     print(new_dict)
+#
+#
+# if __name__ == "__main__":
+#     main()
+#
 
