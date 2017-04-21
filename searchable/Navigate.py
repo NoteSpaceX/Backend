@@ -36,6 +36,7 @@ class Navigate:
             num_cols = len(first_row)
             print(num_cols)
 
+
 @staticmethod
     def get_specific_column_number(word, text):
         # file = open(filename,"r")
@@ -64,18 +65,4 @@ class Navigate:
                     return j
                 j += len(item[k]) + 1
 
-
-
-
 # print(Navigate.get_line("hi", ))
-
-
-
-
-
-
-
-
-
-
-
