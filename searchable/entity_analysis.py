@@ -1,8 +1,9 @@
-import Navigate
-import credentials
-import requests
 import urllib
-from watson_developer_cloud import NaturalLanguageClassifierV1
+
+import requests
+
+from Drafts.EntityAnalysis import credentials
+
 
 # TODO: if word is not in the text
 # TODO: if word is two words
@@ -111,8 +112,8 @@ def create_dict(word,body, text):
         if not item == word:
             # make a list and add item, page number, column number to it
             sublist.append(item)
-            sublist.append(Navigate.Navigate.get_line(item, text))
-            sublist.append(Navigate.Navigate.get_specific_column_number(item, text))
+            sublist.append(Drafts.Navigate.Navigate.get_line(item, text))
+            sublist.append(Drafts.Navigate.Navigate.get_specific_column_number(item, text))
 
             # turn the list into tuple
             item_tuple = tuple(sublist)

@@ -1,9 +1,4 @@
-from tkinter import END
-
-import nltk
 from nltk.corpus import wordnet as wn
-
-import Navigate
 
 
 def synonyms(word):
@@ -33,8 +28,8 @@ def find_word(word, text):
         if not item == word:
             # make a list and add item, page number, column number to it
             sublist.append(item)
-            sublist.append(Navigate.Navigate.get_line(item, "sample.txt"))
-            sublist.append(Navigate.Navigate.get_specific_column_number(item, "sample.txt"))
+            sublist.append(Drafts.Navigate.Navigate.get_line(item, "sample.txt"))
+            sublist.append(Drafts.Navigate.Navigate.get_specific_column_number(item, "sample.txt"))
 
             # turn the list into tuple
             item_tuple = tuple(sublist)

@@ -1,7 +1,4 @@
 import nltk
-from nltk.compat import raw_input
-
-import Navigate
 
 
 class Categorize:
@@ -43,8 +40,8 @@ def make_dict(word, body, text):
             sublist = []
             
             sublist.append(item)
-            sublist.append(Navigate.Navigate.get_line(item, text))
-            sublist.append(Navigate.Navigate.get_specific_column_number(item, text))
+            sublist.append(Drafts.Navigate.Navigate.get_line(item, text))
+            sublist.append(Drafts.Navigate.Navigate.get_specific_column_number(item, text))
             
             item_tuple = tuple(sublist)
             

@@ -1,8 +1,8 @@
-import credentials
-import requests
 import urllib
 
-from watson_developer_cloud import NaturalLanguageClassifierV1
+import requests
+
+from Drafts.EntityAnalysis import credentials
 
 
 class GetData:
