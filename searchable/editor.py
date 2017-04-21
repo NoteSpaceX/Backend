@@ -7,9 +7,9 @@ from tkinter import messagebox
 
 import tkinter.simpledialog as tksd
 
-import concept_search
-import part_speech_categorize
-import search_pop
+import synonym_search
+import part_speech_search
+# import search_pop
 # import take_input
 #
 # from take_input import takeInput
@@ -23,7 +23,7 @@ import search_pop
 # TODO: status bar
 
 # set up the frame
-import sentiment_analysis
+import entity_analysis
 
 master = Tk()
 # set the title of the frame
@@ -128,7 +128,7 @@ def search_synonyms():
     # get the text from the text editor
     the_text = text.get("1.0", END)
     
-    result_dict = concept_search.word_to_concepts(the_text, the_text)
+    result_dict = synonym_search.word_to_concepts(the_text, the_text)
     print(result_dict)
     
     if search_word not in result_dict:
@@ -154,7 +154,7 @@ def part_speach():
     # get the text from the text editor
     the_text = text.get("1.0", END)
     
-    r_dict = part_speech_categorize.make_dict(part_word, the_text, the_text)
+    r_dict = part_speech_search.make_dict(part_word, the_text, the_text)
     print(r_dict)
     
     if part_word not in r_dict:
@@ -179,7 +179,7 @@ def sentiment():
     
     the_text = text.get("1.0", END)
     
-    s_dict = sentiment_analysis.create_dict(s_word,the_text,the_text )
+    s_dict = entity_analysis.create_dict(s_word,the_text,the_text )
     print(s_dict)
     
     if s_word not in s_dict:

@@ -19,7 +19,7 @@ def synonyms(word):
 dict = {}
 
 
-def find_word(word, text):
+def find_word(word, body, the_text):
     word_list = synonyms(word)
 
 
@@ -33,23 +33,24 @@ def find_word(word, text):
         if not item == word:
             # make a list and add item, page number, column number to it
             sublist.append(item)
-            sublist.append(Navigate.Navigate.get_line(item, "sample.txt"))
-            sublist.append(Navigate.Navigate.get_specific_column_number(item, "sample.txt"))
+            sublist.append(Navigate.Navigate.get_line(item, the_text))
+            sublist.append(Navigate.Navigate.get_specific_column_number(item, the_text))
 
             # turn the list into tuple
             item_tuple = tuple(sublist)
-            if item in text and word not in dict:
+            if item in body and word not in dict:
                 dict[word] = [item_tuple]
-            elif word in dict and item in text and item_tuple not in dict[word]:
+            elif word in dict and item in body and item_tuple not in dict[word]:
                 dict[word].append(item_tuple)
 
 
-def word_to_concepts(text):
+def word_to_concepts(text, the_text):
     # text_file = open(file_name,"r")
     # text = text_file.read()
     text = text.split()
+
     for item in text:
-        find_word(item, text)
+        find_word(item, text, the_text)
     return dict
 
 

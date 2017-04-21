@@ -53,7 +53,7 @@ def make_dict(word, body, text):
             elif key in new_dict and item_tuple not in new_dict[key]:
                 new_dict[key].append(item_tuple)
 
-return new_dict
+    return new_dict
 
 
 # def main():
